@@ -1,173 +1,186 @@
-# 🚀 Enterprise-Level Node.js PostgreSQL Application
+ 🚀 Enterprise-Level Node.js PostgreSQL Application
 
-![Node.js](https://img.shields.io/badge/Node.js-v18.x-green?logo=node.js&style=for-the-badge) 
-![TypeScript](https://img.shields.io/badge/TypeScript-v5.x-blue?logo=typescript&style=for-the-badge)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-v16-blue?logo=postgresql&style=for-the-badge)
-![Express](https://img.shields.io/badge/Express-v4.x-lightgrey?logo=express&style=for-the-badge)
+A production-ready Node.js application using PostgreSQL, Express, and TypeScript. Built with clean architecture principles focusing on modularity, maintainability, and scalability.
 
-> A **scalable, enterprise-level project** structure for a Node.js application using PostgreSQL, Express, and TypeScript. Designed with separation of concerns and modularity in mind, this structure ensures **maintainability**, **scalability**, and **reusability**.
+## 📖 Table of Contents
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [Prerequisites](#-prerequisites)
+- [Installation](#-installation)
+- [Environment Setup](#-environment-setup)
+- [API Documentation](#-api-documentation)
+- [Development](#-development)
+- [Testing](#-testing)
+- [Contributing](#-contributing)
+- [License](#-license)
 
----
+## ✨ Features
+- **TypeScript Support**: Full TypeScript implementation for better type safety
+- **PostgreSQL Integration**: Robust database integration with connection pooling
+- **RESTful API**: Well-structured API endpoints following REST principles
+- **Error Handling**: Comprehensive error handling and logging
+- **Environment Configuration**: Secure configuration using dotenv
+- **Code Quality**: ESLint and Prettier for consistent code style
+- **Type Definitions**: Strong typing for database models and API responses
 
-## **📖 Table of Contents**
-- [🚀 Features](#-features)
-- [📂 Project Structure](#-project-structure)
-- [⚙️ Installation](#️-installation)
-- [🚦 Usage](#-usage)
-- [📚 Technologies Used](#-technologies-used)
-- [📜 API Endpoints](#-api-endpoints)
-- [🛠️ Development Workflow](#️-development-workflow)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-
----
-
-## **🚀 Features**
-
-- **Scalable Architecture**: Clean separation of concerns with modular layers (Database, Services, Controllers, Routes).
-- **Database Integration**: PostgreSQL database with a reusable singleton client.
-- **Express Framework**: Lightweight and fast web server with middleware support.
-- **TypeScript**: Strongly-typed language for better developer experience and fewer bugs.
-- **Environment Configuration**: `.env` file for secure and flexible environment variables.
-- **API-First Design**: RESTful API structure with clear endpoints and response formats.
-- **Error Handling**: Centralized error handling mechanisms for production-grade reliability.
-
----
-
-## **📂 Project Structure**
+## 📂 Project Structure
 ```
-project-root/
+src/
+├── api/
+│ ├── controllers/ # Request handlers
+│ ├── middlewares/ # Express middlewares
+│ ├── routes/ # API routes
+│ └── services/ # Business logic
+├── config/
+│ └── database.ts # Database configuration
 ├── db/
-│ ├── client.ts # Singleton database client
-│ ├── migrations/ # Database migrations (e.g., schema changes)
-│ ├── queries/ # SQL queries
-│ │ ├── users.ts # Queries for the users table
-├── services/ # Business logic
-│ ├── userService.ts # Operations related to users
-├── controllers/ # Controllers (handle requests, coordinate services)
-│ ├── userController.ts # Handles user-related actions
-├── routes/ # API routes
-│ ├── userRoutes.ts # Routes for user-related endpoints
-├── utils/ # Utility functions (e.g., validation, logging)
-│ ├── logger.ts # Centralized logging
-│ ├── errorHandler.ts # Error handling middleware
-├── app.ts # Application initialization and configuration
-├── index.ts # Entry point for the application
-├── .env # Environment variables
-├── package.json # Project dependencies and metadata
-├── tsconfig.json # TypeScript configuration
+│ └── migrations/ # Database migrations
+├── types/ # TypeScript type definitions
+├── utils/ # Utility functions
+└── server.ts # Application entry point
 ```
-## **⚙️ Installation**
+## 🔧 Prerequisites
+- Node.js (v14 or higher)
+- PostgreSQL (v13 or higher)
+- npm or yarn
+- Git
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-```
-### 2. Install Dependencies
-```bash
-npm install
-```
-### 3. Set Up Environment Variables
+## ⚙️ Installation
 
-Create a .env file in the root directory and configure your database connection:
+1. Clone the repository:
+```bash
+git clone https://github.com/niksodavaram/my-postgres-app.git
+cd my-postgres-app
+```
+2. Install dependencies
+```bash
+yarn install
+```
+3. Create a .env file in the root directory 
 ```env
-PGHOST=localhost
-PGPORT=5432
-PGUSER=your_db_user
-PGPASSWORD=your_db_password
-PGDATABASE=your_db_name
 PORT=3000
+PGHOST=localhost
+PGUSER=your_username
+PGPASSWORD=your_password
+PGDATABASE=your_database
+PGPORT=5432
 ```
-### 4. Start the Database
-
-Make sure PostgreSQL is running. If you're using Docker, you can start a PostgreSQL container:
+4. Set up the database
 ```bash
-docker run --name postgres -e POSTGRES_USER=your_db_user -e POSTGRES_PASSWORD=your_db_password -e POSTGRES_DB=your_db_name -p 5432:5432 -d postgres
-```
-### 5. Run the Application
+# Create database
+psql -U postgres
+CREATE DATABASE your_database;
 
-Start the server:
+# Run migrations
+yarn db:migrate
+```
+5. Start the development server
 ```bash
-npm run dev
+yarn dev
 ```
-### 6.🚦 Usage
-API Endpoints
+## 🚀 API Documentation
+## Users Endpoints
+#### Create User
+* End Point
+```curl
+POST /api/users
+```
+* Request Body 
+```json
+{
+    "username": "testuser",
+    "email": "test@example.com"
+}
+```
+* Response 
+```json
+{
+    "success": true,
+    "message": "User created successfully."
+}
+```
+#### Get All Users
+* End Point
+```json
+GET /api/users
+```
+* Resposne
+```json
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "username": "testuser",
+            "email": "test@example.com",
+            "createdAt": "2025-08-06T10:00:00.000Z",
+            "isActivated": true
+        }
+    ]
+}
+```
+## 💻 Development
+### Available Scripts
 
-Use the following RESTful API endpoints to interact with the application:
-Method	Endpoint	Description	Payload (JSON)
-```
-GET	/api/users	Fetch all users	-
-POST	/api/users	Add a new user	{ "username": "John", "email": "john@example.com" }
-Testing with Postman or Curl
-```
-    Fetch all users:
-    bash
-```
-curl -X GET http://localhost:3000/api/users
-```
-Add a new user:
+    yarn dev: Start development server with hot-reload
+    yarn build: Build for production
+    yarn start: Start production server
+    yarn test: Run tests
+    yarn lint: Run ESLint
+    yarn format: Format code with Prettier
+
+### Database Migrations
+
+To create a new migration:
 ```bash
 
-    curl -X POST http://localhost:3000/api/users \
-    -H "Content-Type: application/json" \
-    -d '{"username": "John", "email": "john@example.com"}'
+yarn migration:create my_migration_name
 ```
-### 7.📚 Technologies Used
-Technology	Description
-* Node.js	JavaScript runtime for building the app.
-* Express	Web framework for routing and middleware.
-* PostgreSQL	Relational database for data storage.
-* TypeScript	Static typing for better code quality.
-* Docker	Containerized database setup.
-
-### 8. 🛠️ Development Workflow
-Scripts
-Command	Description
+To run migrations:
 ```bash
-npm run dev	Start the app in development mode.
+
+yarn db:migrate
 ```
+## 🧪 Testing
+
+Run the test suite:
 ```bash
-npm run build	Compile TypeScript to JavaScript.
+
+yarn test
 ```
+Run tests with coverage:
 ```bash
-npm run start	Run the app in production mode.
+
+yarn test:coverage
 ```
-```bash
-npm run lint	Lint the code using ESLint.
-```
-### 9. 🤝 Contributing
+## 🤝 Contributing
 
-Contributions are welcome! Follow these steps to contribute:
+Fork the repository
+* Create your feature branch (git checkout -b feature/amazing-feature)
+* Commit your changes (git commit -m 'Add amazing feature')
+* Push to the branch (git push origin feature/amazing-feature)
+* Open a Pull Request
 
-Fork the repository on GitHub.
-Clone your fork locally:
-```bash
-git clone https://github.com/your-username/your-fork-name.git
-cd your-fork-name
-```
+## 📝 License
 
-Create a new branch:
-```bash
-git checkout -b my-feature-branch
-```
-Make your changes and push them:
-bash
+This project is licensed under the MIT License - see the LICENSE file for details.
+## 👤 Author
 
-    git add .
-    git commit -m "Add my feature"
-    git push origin my-feature-branch
+Nik Sodavaram
 
-    Open a Pull Request on the original repository.
+    GitHub: @niksodavaram
 
-📄 License
+## 🙏 Acknowledgments
 
-This project is licensed under the MIT License.
-📧 Contact
+Node.js community
+PostgreSQL community
+TypeScript team
 
-Have questions? Feel free to reach out:
+## 📫 Support
 
-    Email: your-email@example.com
-    LinkedIn: Your LinkedIn Profile
-    GitHub: Your GitHub Profile
+For support, email nik.sodavaram@gmail.com or open an issue on GitHub.
+
+
+
+
 
