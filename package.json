@@ -5,18 +5,34 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "test": "node --experimental-vm-modules node_modules/.bin/jest"
+    "start": "node dist/server.js",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+    "build": "tsc",
+    "db:migrate": "ts-node src/db/migrations/runMigrations.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
   },
   "dependencies": {
+    "@types/express": "^5.0.3",
     "@types/pg": "^8.15.5",
+    "@types/winston": "^2.4.4",
     "dotenv": "^17.2.1",
-    "pg": "^8.16.3"
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^24.2.0",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.3",
     "jest": "^30.0.5",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2",
     "ts-jest": "^29.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
