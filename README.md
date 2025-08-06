@@ -1,6 +1,27 @@
  🚀 Enterprise-Level Node.js PostgreSQL Application
 
+[![TypeScript](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square)](https://www.typescriptlang.org/)
+[![Node.js](https://shields.io/badge/Node.js-339933?logo=Node.js&logoColor=FFF&style=flat-square)](https://nodejs.org/)
+[![PostgreSQL](https://shields.io/badge/PostgreSQL-4169E1?logo=PostgreSQL&logoColor=FFF&style=flat-square)](https://www.postgresql.org/)
+[![Express](https://shields.io/badge/Express-000000?logo=Express&logoColor=FFF&style=flat-square)](https://expressjs.com/)
+[![Jest](https://shields.io/badge/Jest-C21325?logo=Jest&logoColor=FFF&style=flat-square)](https://jestjs.io/)
+[![ESLint](https://shields.io/badge/ESLint-4B32C3?logo=ESLint&logoColor=FFF&style=flat-square)](https://eslint.org/)
+[![License](https://shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+<div align="center">
+  <img src="https://nodejs.org/static/images/logo.svg" width="100" alt="Node.js"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg" width="100" alt="PostgreSQL"/>
+  <img src="https://raw.githubusercontent.com/remojansen/logo.ts/master/ts.png" width="100" alt="TypeScript"/>
+</div>
+
 A production-ready Node.js application using PostgreSQL, Express, and TypeScript. Built with clean architecture principles focusing on modularity, maintainability, and scalability.
+
+
+![GitHub last commit](https://img.shields.io/github/last-commit/niksodavaram/my-postgres-app)
+![GitHub issues](https://img.shields.io/github/issues/niksodavaram/my-postgres-app)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/niksodavaram/my-postgres-app)
+![GitHub followers](https://img.shields.io/github/followers/niksodavaram?style=social)
+
 
 ## 📖 Table of Contents
 - [Features](#-features)
